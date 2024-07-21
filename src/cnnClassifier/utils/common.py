@@ -9,8 +9,24 @@ from box import ConfigBox
 from pathlib import Path
 from typing import Any
 import base64
+import torchvision.transforms as transforms
 
+# Define data augmentation transformations
+@ensure_annotations
+def transform_train():
+    return transforms.Compose([
+    transforms.RandomRotation(20),
+    transforms.RandomHorizontalFlip(),
+    transforms.ToTensor(),
+    transforms.Normalize((0.5,), (0.5,))
+])
 
+@ensure_annotations
+def transform_test():
+   return transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.5,), (0.5,))
+])
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
