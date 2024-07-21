@@ -1,0 +1,13 @@
+
+
+
+
+
+@ensure_annotations
+def transform_test(path: Path) -> ConfigBox:
+
+    with open(path) as f:
+     content = json.load(f)
+
+    logger.info(f"json file loaded succesfully from: {path}")
+    return ConfigBox(content)

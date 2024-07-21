@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from src.cnnClassifier import logger
+from cnnClassifier import logger
 import json
 import joblib
 from ensure import ensure_annotations
@@ -12,21 +12,42 @@ import base64
 import torchvision.transforms as transforms
 
 # Define data augmentation transformations
+
 @ensure_annotations
-def transform_train():
-    return transforms.Compose([
+def transform_train() ->ConfigBox :
+    return ConfigBox(transforms.Compose([
     transforms.RandomRotation(20),
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     transforms.Normalize((0.5,), (0.5,))
-])
+]))
 
 @ensure_annotations
-def transform_test():
-   return transforms.Compose([
+def transform_test(path: Path) -> ConfigBox:
+
+   transform =(transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.5,), (0.5,))
-])
+]))
+
+   return ConfigBox(transform)
+
+@ensure_annotations
+def load_json(path: Path) -> ConfigBox:
+    """load json files data
+
+    Args:
+        path (Path): path to json file
+
+    Returns:
+        ConfigBox: data as class attributes instead of dict
+    """
+    with open(path) as f:
+        content = json.load(f)
+
+    logger.info(f"json file loaded succesfully from: {path}")
+    return ConfigBox(content)
+
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -84,21 +105,6 @@ def save_json(path: Path, data: dict):
 
 
 
-@ensure_annotations
-def load_json(path: Path) -> ConfigBox:
-    """load json files data
-
-    Args:
-        path (Path): path to json file
-
-    Returns:
-        ConfigBox: data as class attributes instead of dict
-    """
-    with open(path) as f:
-        content = json.load(f)
-
-    logger.info(f"json file loaded succesfully from: {path}")
-    return ConfigBox(content)
 
 
 @ensure_annotations
