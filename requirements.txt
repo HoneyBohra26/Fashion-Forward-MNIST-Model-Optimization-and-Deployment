@@ -1,0 +1,22 @@
+mlflow
+numpy
+pandas
+matplotlib
+torch
+torchvision
+scikit-learn
+hyperopt
+seaborn
+dvc
+notebook
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+scipy
+Flask
+Flask-Cors
+gdown
+-e .
