@@ -1,9 +1,15 @@
-learning_rate_exp_max: -1
-learning_rate_exp_min: -6
-num_epochs_max: 15
-num_epochs_min: 3
-optimizer:  ['Adam', 'SGD']
-batch_size_max: 150
-batch_size_min: 50
-IMAGE_SIZE: [3,28, 28] 
+learning_rate: 0.001
+num_epochs: 5
+optimizer: 0
+batch_size: 100
 classes : 10
+bool_checkpoint : False
+# learning_rate_exp_max: -1
+# learning_rate_exp_min: -6
+# num_epochs_max: 15
+# num_epochs_min: 3
+# optimizer:  ['Adam', 'SGD']
+# batch_size_max: 150
+# batch_size_min: 50
+# IMAGE_SIZE: [3,28, 28] 
+# classes : 10

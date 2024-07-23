@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/bohra/Mnist_fashion_model/mlruns/0/75da540197bb4fbea35ea130ed49fcc5/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 75da540197bb4fbea35ea130ed49fcc5
+run_name: valuable-elk-510
+run_uuid: 75da540197bb4fbea35ea130ed49fcc5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721654444566
+status: 1
+tags: []
+user_id: bohra

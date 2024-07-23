@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1721695139744
+current_stage: None
+description: null
+last_updated_timestamp: 1721695139744
+name: model1
+run_id: ccf90383fd22440d92410509af05edd5
+run_link: null
+source: file:///c:/Users/bohra/Mnist_fashion_model/mlruns/0/ccf90383fd22440d92410509af05edd5/artifacts/model1
+status: READY
+status_message: null
+storage_location: file:///c:/Users/bohra/Mnist_fashion_model/mlruns/0/ccf90383fd22440d92410509af05edd5/artifacts/model1
+user_id: null
+version: 2

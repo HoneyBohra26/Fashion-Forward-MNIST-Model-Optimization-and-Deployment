@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/bohra/Mnist_fashion_model/mlruns/0/c10174665ec342c0832c3fdfc8a279b7/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c10174665ec342c0832c3fdfc8a279b7
+run_name: lyrical-dolphin-410
+run_uuid: c10174665ec342c0832c3fdfc8a279b7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721656403926
+status: 1
+tags: []
+user_id: bohra

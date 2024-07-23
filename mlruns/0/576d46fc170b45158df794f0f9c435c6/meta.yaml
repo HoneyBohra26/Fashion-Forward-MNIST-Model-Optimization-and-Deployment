@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/bohra/Mnist_fashion_model/mlruns/0/576d46fc170b45158df794f0f9c435c6/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 576d46fc170b45158df794f0f9c435c6
+run_name: skittish-roo-364
+run_uuid: 576d46fc170b45158df794f0f9c435c6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721657864280
+status: 1
+tags: []
+user_id: bohra
