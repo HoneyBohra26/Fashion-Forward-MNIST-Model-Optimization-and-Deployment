@@ -64,6 +64,8 @@ def validate_model(model,valid_loader,checkpoint_dir,epoch,best_val_accuracy,
         val_loss_list.append(validation_loss)
         val_accuracy_list.append(validation_accuracy)
 
+      return True
+
 
 def plot_loss_accuracy(train_loss_list, train_accuracy_list, val_loss_list, val_accuracy_list,num_epochs):
 
@@ -78,10 +80,7 @@ def plot_loss_accuracy(train_loss_list, train_accuracy_list, val_loss_list, val_
     plt.ylabel('Loss')
     plt.legend()
     plt.title('Training and val Loss')
-    plt.savefig('Training and val Loss.png')
-    mlflow.log_artifact('Training and val Loss.png')
-
-
+   
     plt.subplot(1, 2, 2)
     plt.plot(epochs, train_accuracy_list, 'b', label='Training Accuracy')
     plt.plot(epochs, val_accuracy_list, 'r', label='val Accuracy')
@@ -89,10 +88,15 @@ def plot_loss_accuracy(train_loss_list, train_accuracy_list, val_loss_list, val_
     plt.ylabel('Accuracy')
     plt.legend()
     plt.title('Training and val Accuracy')
+    plt.show()
     plt.savefig('Training and val Accuracy.png')
     mlflow.log_artifact('Training and val Accuracy.png')
+    plt.savefig('Training and val Loss.png')
+    mlflow.log_artifact('Training and val Loss.png')
 
-    plt.show()
+    return True
+
+
 
 
 def evaluation_metrics_n_Hyperparameters(self,labels_list,predictions_list,train_loss,epoch):
@@ -116,6 +120,8 @@ def evaluation_metrics_n_Hyperparameters(self,labels_list,predictions_list,train
 
       self.train_loss_list.append(train_loss)
       self.train_accuracy_list.append(accuracy)
+
+      return True
 
 def log_model_n_params(model,labels_list,predictions_list,params):
 
@@ -148,6 +154,8 @@ def log_model_n_params(model,labels_list,predictions_list,params):
 
     print(cm_json.keys())
     print(cm_json['confusion_matrix'])
+
+    return True
 
 
 
