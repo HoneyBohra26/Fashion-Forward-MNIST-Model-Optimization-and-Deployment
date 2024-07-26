@@ -13,7 +13,7 @@ from torch.utils.data import random_split
 from pathlib import Path
 
 def validate_model(model,valid_loader,checkpoint_dir,epoch,best_val_accuracy,
-                   device,val_loss_list,val_accuracy_list):
+                   device):
 
       error = nn.CrossEntropyLoss()
 
@@ -61,45 +61,11 @@ def validate_model(model,valid_loader,checkpoint_dir,epoch,best_val_accuracy,
             torch.save(model, checkpoint_path)
             print(f'Model checkpoint saved at {checkpoint_path}')
 
-        val_loss_list.append(validation_loss)
-        val_accuracy_list.append(validation_accuracy)
 
       return True
 
 
-def plot_loss_accuracy(train_loss_list, train_accuracy_list, val_loss_list, val_accuracy_list,num_epochs):
-
-    epochs = range(0, num_epochs )
-
-    plt.figure(figsize=(12, 5))
-
-    plt.subplot(1, 2, 1)
-    plt.plot(epochs, train_loss_list, 'b', label='Training Loss')
-    plt.plot(epochs, val_loss_list, 'r', label='val Loss')
-    plt.xlabel('Epochs')
-    plt.ylabel('Loss')
-    plt.legend()
-    plt.title('Training and val Loss')
-   
-    plt.subplot(1, 2, 2)
-    plt.plot(epochs, train_accuracy_list, 'b', label='Training Accuracy')
-    plt.plot(epochs, val_accuracy_list, 'r', label='val Accuracy')
-    plt.xlabel('Epochs')
-    plt.ylabel('Accuracy')
-    plt.legend()
-    plt.title('Training and val Accuracy')
-    plt.show()
-    plt.savefig('Training and val Accuracy.png')
-    mlflow.log_artifact('Training and val Accuracy.png')
-    plt.savefig('Training and val Loss.png')
-    mlflow.log_artifact('Training and val Loss.png')
-
-    return True
-
-
-
-
-def evaluation_metrics_n_Hyperparameters(self,labels_list,predictions_list,train_loss,epoch):
+def evaluation_metrics_n_Hyperparameters(labels_list,predictions_list,train_loss,epoch):
       # Calculate evaluation metrics
       labels_cpu = torch.cat(labels_list).cpu().numpy() # Move to CPU and convert to NumPy
       predictionss_cpu = torch.cat(predictions_list).cpu().numpy() # Move to CPU and convert to NumPy
@@ -116,10 +82,8 @@ def evaluation_metrics_n_Hyperparameters(self,labels_list,predictions_list,train
       mlflow.log_metric(f'epoch{epoch}_recall', recall)
       mlflow.log_metric(f'epoch{epoch}_loss', train_loss)
 
-      logger.info("epoch: {}, Loss: {}, Accuracy: {}%".format(epoch, train_loss, accuracy))
+      logger.info("epoch: {},Train_Loss: {}, Train_Accuracy: {}%".format(epoch, train_loss, accuracy))
 
-      self.train_loss_list.append(train_loss)
-      self.train_accuracy_list.append(accuracy)
 
       return True
 
@@ -133,6 +97,10 @@ def log_model_n_params(model,labels_list,predictions_list,params):
     artifact_path="model1",
     signature=None,
     registered_model_name="model1",)
+
+    os.makedirs(model, exist_ok=True)
+    torch.save(model, 'model\model.pth')
+
 
     # Log confusion matrix (example assuming you convert it to JSON)
     cm = confusion_matrix(labels_cpu, predictionss_cpu)
@@ -148,12 +116,7 @@ def log_model_n_params(model,labels_list,predictions_list,params):
     plt.xlabel('Predicted')
     plt.ylabel('True')
     plt.title('Confusion Matrix')
-    plt.show()
     plt.savefig('confusion_matrix.png')
-    mlflow.log_artifact('confusion_matrix.png')
-
-    print(cm_json.keys())
-    print(cm_json['confusion_matrix'])
 
     return True
 

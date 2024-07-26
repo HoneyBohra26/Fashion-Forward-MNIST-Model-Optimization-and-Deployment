@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/bohra/Mnist_fashion_model/mlruns/0/e5fbc6f12fc44f4081149002ef10d5cd/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e5fbc6f12fc44f4081149002ef10d5cd
+run_name: legendary-sheep-630
+run_uuid: e5fbc6f12fc44f4081149002ef10d5cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721978929887
+status: 1
+tags: []
+user_id: bohra

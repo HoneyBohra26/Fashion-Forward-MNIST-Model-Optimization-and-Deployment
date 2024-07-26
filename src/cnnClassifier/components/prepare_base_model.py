@@ -1,10 +1,6 @@
 import os
-import urllib.request as request
-from zipfile import ZipFile
-import torch.nn.functional as F
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
 import torchvision
 from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
 from pathlib import Path

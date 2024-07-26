@@ -12,7 +12,7 @@ from torch.utils.data import random_split
 from torchvision import transforms
 from cnnClassifier import logger
 from cnnClassifier.utils.training_utils import log_model_n_params,validate_model
-from cnnClassifier.utils.training_utils import evaluation_metrics_n_Hyperparameters,plot_loss_accuracy
+from cnnClassifier.utils.training_utils import evaluation_metrics_n_Hyperparameters
 from cnnClassifier.utils.common import transform_train
 from cnnClassifier.entity.config_entity import TrainingConfig
 
@@ -30,10 +30,6 @@ class Training:
     def __init__(self, config: TrainingConfig):
         self.config = config
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.train_loss_list = []
-        self.train_accuracy_list = []
-        self.val_loss_list = [] 
-        self.val_accuracy_list = []
         self.best_val_accuracy = 0
 
     def train_val_split(self):
@@ -106,6 +102,7 @@ class Training:
                 predictions = torch.max(outputs, 1)[1].to(self.device)
                 predictions_list.append(predictions)
                 labels_list.append(labels)
+                logger.info('Training: Forward pass complete')
 
                 # Initializing a gradient as 0 so there is no mixing of gradient among the batches
                 optimizer.zero_grad()
@@ -123,18 +120,14 @@ class Training:
 
         # validation
             valid_complete = validate_model(self.model,self.valid_loader,checkpoint_dir,epoch,self.best_val_accuracy,
-                                 self.device,self.val_loss_list,self.val_accuracy_list)
+                                 self.device)
             
             logger.info(f'valid_complete = {valid_complete}')
 
         #logging and evaluating metrics_n_Hyperparameters
-            metrics_eval_complete = evaluation_metrics_n_Hyperparameters(self,labels_list,predictions_list,train_loss,epoch)
+            metrics_eval_complete = evaluation_metrics_n_Hyperparameters(labels_list,predictions_list,train_loss,epoch)
             logger.info(f'metrics_eval_complete = {metrics_eval_complete}')
 
-        #plotting loss and accuracy
-        plotting_loss_accuracy_complete = plot_loss_accuracy(self.train_loss_list, self.train_accuracy_list, 
-                           self.val_loss_list, self.val_accuracy_list,self.config.params_epochs)
-        logger.info(f'plotting_loss_accuracy_complete = {plotting_loss_accuracy_complete}')
 
         #logging the model
         logging_model_n_params_complete = log_model_n_params(self.model,labels_list,predictions_list,self.config.param)

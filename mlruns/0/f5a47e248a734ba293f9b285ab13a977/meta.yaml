@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/bohra/Mnist_fashion_model/mlruns/0/f5a47e248a734ba293f9b285ab13a977/artifacts
+end_time: 1721995572951
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f5a47e248a734ba293f9b285ab13a977
+run_name: colorful-mule-86
+run_uuid: f5a47e248a734ba293f9b285ab13a977
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721995558589
+status: 3
+tags: []
+user_id: bohra

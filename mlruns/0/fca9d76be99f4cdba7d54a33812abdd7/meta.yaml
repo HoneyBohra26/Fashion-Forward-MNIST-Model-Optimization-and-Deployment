@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/bohra/Mnist_fashion_model/mlruns/0/fca9d76be99f4cdba7d54a33812abdd7/artifacts
+end_time: 1721729555950
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fca9d76be99f4cdba7d54a33812abdd7
+run_name: melodic-tern-610
+run_uuid: fca9d76be99f4cdba7d54a33812abdd7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721729555810
+status: 3
+tags: []
+user_id: bohra

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/bohra/Mnist_fashion_model/mlruns/0/be010a7140d34ca4b59489d99450dd04/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: be010a7140d34ca4b59489d99450dd04
+run_name: upset-hare-906
+run_uuid: be010a7140d34ca4b59489d99450dd04
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721721983854
+status: 1
+tags: []
+user_id: bohra

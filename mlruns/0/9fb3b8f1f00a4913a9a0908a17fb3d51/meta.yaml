@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/bohra/Mnist_fashion_model/mlruns/0/9fb3b8f1f00a4913a9a0908a17fb3d51/artifacts
+end_time: 1721996338772
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9fb3b8f1f00a4913a9a0908a17fb3d51
+run_name: wistful-bee-960
+run_uuid: 9fb3b8f1f00a4913a9a0908a17fb3d51
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1721996330830
+status: 3
+tags: []
+user_id: bohra
