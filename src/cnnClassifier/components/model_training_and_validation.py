@@ -54,6 +54,7 @@ class Training:
         torch.save(self.model, self.config.trained_model_path)
     
     def train_model(self):
+        torch.manual_seed(42)
 
         error = nn.CrossEntropyLoss()
         model1 = self.model
